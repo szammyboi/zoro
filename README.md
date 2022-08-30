@@ -1,2 +1,2 @@
 # zoro
-A (Poorly Written) Ninja File Generator &amp; Management System
+The Drippiest C++ Management System
