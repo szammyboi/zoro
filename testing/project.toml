@@ -1,0 +1,21 @@
+[workspace]
+name = "szammyboi"
+architecture = "x64"
+configurations = [
+    "debug",
+    "release"
+]
+
+[zoro]
+type = "executable"
+language = "C++"
+files = [
+    "src/**.cxx",
+    "src/**.h"
+]
+includedirs = []
+
+[zoro.release]
+optimize = true
+[zoro.debug]
+defines = ["DEBUG"]

@@ -1,0 +1,38 @@
+# project build file
+# generated with premake ninja
+
+ninja_required_version = 1.6
+
+# core rules for debug
+rule cc
+  command = gcc -m64 -I../vendor/toml11 -MMD -MF $out.d -c -o $out $in
+  description = cc $out
+  depfile = $out.d
+  deps = gcc
+
+rule cxx
+  command = g++ -m64 -MMD -MP -m64 -I../vendor/toml11 -MMD -MF $out.d -c -o $out $in
+  description = cxx $out
+  depfile = $out.d
+  deps = gcc
+
+rule ar
+  command = ar rcs $out $in
+  description = ar $out
+
+rule link
+  command = g++ -o $out $in   -L/usr/lib64 -m64 -s
+  description = link $out
+
+rule custom_command
+  command = $CUSTOM_COMMAND
+  description = $CUSTOM_DESCRIPTION
+
+# build files
+build obj/debug/app.o: cxx ../src/app.cxx
+build obj/debug/parsing.o: cxx ../src/parsing.cxx
+
+# link executable
+build bin/debug/zoro.exe: link obj/debug/app.o obj/debug/parsing.o 
+
+build zoro_debug: phony bin/debug/zoro.exe
