@@ -1,5 +1,3 @@
-![Roronoa Zoro](https://external-preview.redd.it/tPOdDAU_XyY7yShBWzl6sKEj6rwzWv1YASG_LPG1A4k.jpg?auto=webp&s=b1308f61581bbd4317142c79844278ed122f0566)
-
 # Zoro: Killer C++
 
 
