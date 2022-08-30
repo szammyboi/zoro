@@ -1,2 +1,2 @@
 # zoro
-A Ninja File Generator &amp; Management System
+A (Poorly Written) Ninja File Generator &amp; Management System
