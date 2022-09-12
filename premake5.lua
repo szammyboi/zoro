@@ -19,6 +19,8 @@ require 'zoro'
 workspace "szammyboi"
     architecture "x64"
     location "build"
+    language "C++"
+    cppdialect "C++20"
     configurations {
         "debug",
         "release"
@@ -28,14 +30,58 @@ workspace "szammyboi"
 project "zoro"
     kind "ConsoleApp"
     location "build"
+
+    targetdir "build/%{prj.name}/bin/%{cfg.buildcfg}"
+    objdir "build/%{prj.name}/obj/%{cfg.buildcfg}"
+
     files {
-        "src/**.cxx",
+        "src/**.cpp",
         "src/**.h"
     }
 
     includedirs {
-        "vendor/toml11"
+        "vendor/toml11",
+        "vendor/spdlog/include"
     }
 
     filter "configurations:release"
         optimize "On"
+        defines {
+            "NDEBUG"
+        }
+
+    filter "configurations:debug"
+        defines {
+            "DEBUG"
+        }
+
+    libdirs {
+        "build/spdlog/bin/%{cfg.buildcfg}"
+    }
+
+    links {
+        "spdlog"
+    }
+
+--[[
+project "spdlog"
+    kind "StaticLib"
+    location "build"
+    language "C++"
+
+    targetdir "build/%{prj.name}/bin/%{cfg.buildcfg}"
+    objdir "build/%{prj.name}/obj/%{cfg.buildcfg}"
+
+    files {
+        "vendor/spdlog/src/**.cpp",
+        "vendor/spdlog/include/**.h"
+    }
+
+    includedirs {
+        "vendor/spdlog/include"
+    }
+
+    defines {
+        "SPDLOG_COMPILED_LIB"
+    }
+]]
