@@ -1,4 +1,4 @@
-# Zoro: Killer C++
+# Zoro: Killer C++ (WIP)
 
 
 Zoro is an all-around tool for making, managing, and building C++ projects.
