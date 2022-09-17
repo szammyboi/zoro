@@ -14,7 +14,6 @@
 ]]
 
 require "ninja"
-require 'zoro'
 
 workspace "szammyboi"
     architecture "x64"
@@ -63,7 +62,7 @@ project "zoro"
         "spdlog"
     }
 
---[[
+
 project "spdlog"
     kind "StaticLib"
     location "build"
@@ -84,4 +83,4 @@ project "spdlog"
     defines {
         "SPDLOG_COMPILED_LIB"
     }
-]]
+

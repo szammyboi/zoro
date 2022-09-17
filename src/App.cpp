@@ -30,14 +30,18 @@ int main(int argc, char *argv[])
 
     Zoro::Log::Init();
 
-#ifdef ZR_PLATFORM_WINDOWS
-    ZORO_INFO("Windows Platform Detected!");
-#endif
+    #ifdef ZR_PLATFORM_WINDOWS
+      ZORO_INFO("Windows Platform Detected!");
+    #endif
+
+    #ifdef ZR_PLATFORM_LINUX
+      ZORO_INFO("Linux Platform Detected!");
+    #endif
 
     if (argc > 0)
-        ZORO_INFO(GetCommand(argv[1]));
+        //ZORO_INFO(GetCommand(argv[1]));
 
-    UpdateStore();
+    //UpdateStore();
 
     /*
     std::string projectFile = FindFile("project.toml");
