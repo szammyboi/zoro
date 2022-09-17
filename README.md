@@ -45,10 +45,6 @@ includes = [
 links = [
     "GLFW"
 ]
-# not necessary if using a zoro package
-libdirs = [
-    "vendor/GLFW/bin"
-]
 
 
 [debug]
