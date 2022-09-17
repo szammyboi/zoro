@@ -1,5 +1,7 @@
 #pragma once
 
+// Credit to TheCherno/Hazel
+
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
