@@ -13,15 +13,31 @@ namespace fs = std::filesystem;
 
 void UpdateStore()
 {
-    fs::path userpath;
+    fs::path config_path;
     std::string user_string = getenv(HOME_DIR);
     if (user_string == "") {
         ZORO_ERROR("Could Not Find Userpath, Defaulting to Local Directory");
         user_string = "./";
+        // don't make .zoro folder in this case
       }
     
-    userpath = user_string;
-    std::cout << userpath.string() << std::endl;
+    config_path = user_string + "/.zoro";
+
+    if (fs::exists(config_path) && fs::is_directory(config_path))
+    {
+        ZORO_DEBUG("Zoro Config Folder Found!");
+    }
+    else
+    {
+        ZORO_DEBUG("No Previous Zoro Installation Found");
+        ZORO_INFO("Beginning Initial Setup...");
+        
+        if (fs::create_directory(config_path))
+        {
+            ZORO_DEBUG("Zoro Folder Created Successfully");
+        }
+    }
+    //std::cout << userpath.string() << std::endl;
 
 
 
