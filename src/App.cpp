@@ -2,16 +2,29 @@
 #include "toml.hpp"
 #include "Zoro.h"
 
-enum Command
+enum class Command
 {
     Add = 0,
     Run,
+    Build,
     Config,
     Undefined
 };
 
+static const char *command_str[] =
+  {"Add", "Run", "Build", "Any", "Undefined"};
+
+void to_lower(std::string& data)
+{
+  std::transform(data.begin(), data.end(), data.begin(),
+    [](unsigned char c){ return std::tolower(c); });
+}
+
+
 Command GetCommand(std::string str)
 {
+    to_lower(str);
+    //std::string test = (Command)str;
     if (str == "add")
     {
         return Command::Add;
@@ -19,6 +32,10 @@ Command GetCommand(std::string str)
     else if (str == "run")
     {
         return Command::Run;
+    }
+    else if (str == "build")
+    {
+      return Command::Build;
     }
     // check for config
     else
@@ -29,7 +46,7 @@ Command GetCommand(std::string str)
 
 int main(int argc, char *argv[])
 {
-
+    // default is build and run??
     Zoro::Log::Init();
 
     #ifdef ZR_PLATFORM_WINDOWS
@@ -49,8 +66,16 @@ int main(int argc, char *argv[])
       return -1;
     }
 
+    std::string selectedCommand = command_str[(int)command];
+    selectedCommand.append(" command selected");
+    ZORO_INFO(selectedCommand);
 
-    //UpdateStore();
+
+    char * userpath = std::getenv("USERPROFILE");
+    if (userpath != nullptr)
+      std::cout << userpath << std::endl;
+    else
+      ZORO_ERROR("Could Not Find Userpath, Defaulting to Local Directory");
 
     /*
     std::string projectFile = FindFile("project.toml");
