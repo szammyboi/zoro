@@ -3,23 +3,24 @@
 
 namespace fs = std::filesystem;
 
+#if defined(ZR_PLATFORM_WINDOWS)
+    #define HOME_DIR "USERPROFILE"
+#elif defined(ZR_PLATFORM_LINUX)
+    #define HOME_DIR "HOME"
+#else
+    #define HOME_DIR ""
+#endif
+
 void UpdateStore()
 {
     fs::path userpath;
-    
-    #ifdef ZR_PLATFORM_WINDOWS
-      std::string user_string = getenv("USERPROFILE");
-      if (user_string == "") {
+    std::string user_string = getenv(HOME_DIR);
+    if (user_string == "") {
         ZORO_ERROR("Could Not Find Userpath, Defaulting to Local Directory");
         user_string = "./";
       }
-      userpath = user_string;
-    #endif
-
-    #ifdef ZR_PLATFORM_LINUX
-        userpath = "~/";
-    #endif
-
+    
+    userpath = user_string;
     std::cout << userpath.string() << std::endl;
 
 
