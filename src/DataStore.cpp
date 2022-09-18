@@ -17,7 +17,7 @@ void UpdateStore()
     #endif
 
     #ifdef ZR_PLATFORM_LINUX
-        userpath = "/usr"
+        userpath = "/usr";
     #endif
 
     std::cout << userpath.string() << std::endl;
