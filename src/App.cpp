@@ -6,7 +6,8 @@ enum Command
 {
     Add = 0,
     Run,
-    Config
+    Config,
+    Undefined
 };
 
 Command GetCommand(std::string str)
@@ -19,9 +20,10 @@ Command GetCommand(std::string str)
     {
         return Command::Run;
     }
+    // check for config
     else
     {
-        return Command::Config;
+        return Command::Undefined;
     }
 }
 
@@ -38,8 +40,15 @@ int main(int argc, char *argv[])
       ZORO_INFO("Linux Platform Detected!");
     #endif
 
-    if (argc > 0)
-        //ZORO_INFO(GetCommand(argv[1]));
+    Command command = Command::Run;
+    if (argc > 1)
+        command = GetCommand(argv[1]);
+    if (command == Command::Undefined)
+    {
+      ZORO_FATAL("Invalid Command Given");
+      return -1;
+    }
+
 
     //UpdateStore();
 
