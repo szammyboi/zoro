@@ -70,12 +70,8 @@ int main(int argc, char *argv[])
     selectedCommand.append(" command selected");
     ZORO_INFO(selectedCommand);
 
-
-    char * userpath = std::getenv("USERPROFILE");
-    if (userpath != nullptr)
-      std::cout << userpath << std::endl;
-    else
-      ZORO_ERROR("Could Not Find Userpath, Defaulting to Local Directory");
+    UpdateStore();
+    
 
     /*
     std::string projectFile = FindFile("project.toml");
