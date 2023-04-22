@@ -1,6 +1,4 @@
 #include "FileExplorer.h"
-#include "index.h"
-#include "Tools.h"
 #include <iostream>
 
 #include <yaml-cpp/yaml.h>

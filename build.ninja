@@ -6,10 +6,8 @@ rule cc
 rule link
   command = g++ -o $out $in   -L/usr/lib64 -m64 -s
 
-build build/temp/Tools.o: cc src/Tools.cpp
 build build/temp/FileExplorer.o: cc src/FileExplorer.cpp
 build build/temp/app.o: cc src/app.cpp
-build build/temp/index.o: cc src/index.cpp
 
-build build/app.exe: link build/temp/app.o build/temp/index.o build/temp/FileExplorer.o build/temp/Tools.o vendor/yaml-cpp/build/libyaml-cpp.a
+build build/app.exe: link build/temp/app.o build/temp/index.o build/temp/FileExplorer.o vendor/yaml-cpp/build/libyaml-cpp.a
 
