@@ -1,0 +1,9 @@
+build/
+compile_commands.json
+build.sh
+build.ninja
+.ccls-cache/
+.cache/
+.vscode/
+.ninja_log
+

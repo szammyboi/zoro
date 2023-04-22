@@ -1,0 +1,12 @@
+project:
+  name: BasicProject
+  language: cpp
+  cppdialect: 17
+  files:
+    - src/**.cpp
+  include:
+    - vendor/yaml-cpp/include
+
+windows:
+  define:
+    - PLATFORM_WINDOWS
