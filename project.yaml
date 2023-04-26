@@ -2,6 +2,7 @@ project:
   name: BasicProject
   language: cpp
   cppdialect: 17
+  outputdir: build
   files:
     - src/**.cpp
   include:

@@ -1,13 +1,14 @@
 cflags = -Wall
 
 rule cc
-  command = g++ -m64 -MMD -MP -m64 -std=c++17 $cflags -c $in -o $out -I./vendor/yaml-cpp/include
+  command = g++ -m64 -MMD -MP -m64 -std=c++17 $cflags -c $in -o $out -I./vendor/yaml-cpp/include -I./src
 
 rule link
   command = g++ -o $out $in   -L/usr/lib64 -m64 -s
 
 build build/temp/FileExplorer.o: cc src/FileExplorer.cpp
+build build/temp/Project.o: cc src/Project.cpp
 build build/temp/app.o: cc src/app.cpp
 
-build build/app.exe: link build/temp/app.o build/temp/index.o build/temp/FileExplorer.o vendor/yaml-cpp/build/libyaml-cpp.a
+build build/app.exe: link build/temp/app.o build/temp/FileExplorer.o build/temp/Project.o vendor/yaml-cpp/build/libyaml-cpp.a
 
