@@ -1,0 +1,15 @@
+[workspace]
+name = "Example"
+configs = ["debug", "release"]
+default = "ExampleProject"
+
+[ExampleProject]
+type = "executable"
+files = ["src/**.cpp"]
+include = ["include"]
+
+[ExampleProject.Windows]
+define = "OS_WINDOWS"
+
+[ExampleProject.Debug]
+optimize = 2

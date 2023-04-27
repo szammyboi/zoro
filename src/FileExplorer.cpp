@@ -1,4 +1,4 @@
-#include "FileExplorer.h"
+#include <Zoro/FileExplorer.h> 
 #include <filesystem>
 
 FileExplorer::FileExplorer()
@@ -31,7 +31,7 @@ void FileExplorer::FindFilesImpl(std::vector<std::string>& vec, const std::strin
   bool folder = sectionEnd != std::string::npos;
   bool file = extensionStart != std::string::npos; 
   std::string section;
-  
+   
   if (!folder) 
     goto file;
 
@@ -42,10 +42,10 @@ void FileExplorer::FindFilesImpl(std::vector<std::string>& vec, const std::strin
     if (dir.is_directory())
       return FindFilesImpl(vec, remainingPath.substr(sectionEnd + 1), currentPath + dir.path().filename().string() + '/');
   
-file:
-  if (!file || remainingPath.find("**") == std::string::npos) return;
-  section = remainingPath.substr(extensionStart); 
-  for (const auto& file : std::filesystem::directory_iterator(currentPath)) 
-    if (file.path().extension() == section)
-      vec.push_back(currentPath + file.path().filename().string());
+  file:
+    if (!file || remainingPath.find("**") == std::string::npos) return;
+    section = remainingPath.substr(extensionStart); 
+    for (const auto& file : std::filesystem::directory_iterator(currentPath)) 
+      if (file.path().extension() == section)
+        vec.push_back(currentPath + file.path().filename().string());
 }

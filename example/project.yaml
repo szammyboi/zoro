@@ -1,0 +1,11 @@
+project:
+  name: BasicProject
+  type: exec
+  cppversion: 20
+  outputdir: build
+  files:
+    - src/**.cpp 
+  include:
+    - include
+  define:
+    - WINDOWS
