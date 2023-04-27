@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h3 align="center">Zoro</h3>
+  <h1 align="center">Zoro</h1>
 
   <p align="center">
     A simple build system file generator
