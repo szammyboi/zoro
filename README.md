@@ -12,8 +12,6 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/szammyboi/zoro/total) ![Contributors](https://img.shields.io/github/contributors/szammyboi/zoro?color=dark-green) ![Issues](https://img.shields.io/github/issues/szammyboi/zoro) ![License](https://img.shields.io/github/license/szammyboi/zoro) 
-
 ## Table Of Contents
 
 * [About the Project](#about-the-project)
