@@ -1,4 +1,10 @@
 build/
+example/build
+example/compile_commands.json
+example/.ccls-cache/
+example/.cache/
+example/.vscode/
+example/.ninja_log
 compile_commands.json
 build.sh
 .ccls-cache/
